@@ -34,6 +34,12 @@ Both data sets are first cleaned before being passed to the 2 different methods:
 
 **Features:**
   * `currency_convert`: converts amounts in various currencies to SGD
+
+    ``` 
+    conversion_rate = {'USD': 1.36, 'AUD': 1.05, 'SGD': 1, 'MYR': 0.35, 'PHP': 0.029, 'CNY': 0.21, 'IDR': 0.0001,'INR': 0.02, 'GBP': 2.03, 'EUR': 1.62}
+    
+     ```
+
   * `clean_web_affiliate_name`: clean data in Web to match the data in DB
   * `clean_db_affiliate_name`: clean data in DB to match the data in Web
 
@@ -45,20 +51,35 @@ This method will compare the order amount and commission amount in Web data with
 
 This function gives us the ratio of similarity between the Web and DB's order amount and commission amount.
 ```
-if (DB order amount < Web order amount) : 
+* if (DB order amount < Web order amount) : 
     100 * (DB order amount / Web order amount)
- else:
+  else:
     100 * (Web order amount / DB order amount)
     
-if (DB commission amount < Web commission amount) :
+* if (DB commission amount < Web commission amount) :
     100 * (DB commission amount / Web commission amount)
-else:
+  else:
     100 * (Web commission amount / DB commission amount)
 ```
 #### Difference
 
 This function gives us the difference between the Web and DB's order and commission amount.
-'''
+```
+* DB order amount - Web order amount
+
+* DB commission amount - Web commission amount 
+```
+
+### Error Rate
+
+This function gives us the error rate base on DB data.
+```
+* 100 * (( DB order amount - Web order amount) / DB order amount)
+
+* 100 * ((DB commission amount - Web commission amount) / DB commission amount)
+```
+
+
 
 
 
