@@ -1,6 +1,7 @@
  Affiliate Comparison
 =======================
-A check on data consistency across 2 data sources
+A check on data consistency across 2 data sources.
+
 This repository contains all the code to reproduce the results and findings below.
 
 A simple script written in python has been created to execute the comparison of the data sets downloaded from ShopBack affiliate networks and the data sets downloaded from the new commission tables in our database. 
@@ -30,6 +31,7 @@ Methodology
 Both data sets are first cleaned before being passed to the 2 different methods: Similarity Ratio and Match ST
 
 ### Cleaner
+-------------
 
 **Features:**
   * `currency_convert`: converts amounts in various currencies to SGD
@@ -37,6 +39,7 @@ Both data sets are first cleaned before being passed to the 2 different methods:
   * `clean_db_affiliate_name`: clean data in DB to match the data in Web
 
 ### Compare amount
+-------------------
 
 This method will compare the order amount and commission amount in Web data with the order amount and commission amount in DB data to give us the similarity ratio, difference and error rate.
 
