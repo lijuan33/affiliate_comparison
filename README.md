@@ -31,7 +31,6 @@ Methodology
 Both data sets are first cleaned before being passed to the 2 different methods: Similarity Ratio and Match ST
 
 ### Cleaner
--------------
 
 **Features:**
   * `currency_convert`: converts amounts in various currencies to SGD
@@ -39,7 +38,6 @@ Both data sets are first cleaned before being passed to the 2 different methods:
   * `clean_db_affiliate_name`: clean data in DB to match the data in Web
 
 ### Compare amount
--------------------
 
 This method will compare the order amount and commission amount in Web data with the order amount and commission amount in DB data to give us the similarity ratio, difference and error rate.
 
