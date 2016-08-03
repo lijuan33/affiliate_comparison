@@ -36,7 +36,8 @@ Both data sets are first cleaned before being passed to the 2 different methods:
   * `currency_convert`: converts amounts in various currencies to SGD
 
     ``` 
-    conversion_rate = {'USD': 1.36, 'AUD': 1.05, 'SGD': 1, 'MYR': 0.35, 'PHP': 0.029, 'CNY': 0.21, 'IDR': 0.0001,'INR': 0.02, 'GBP': 2.03, 'EUR': 1.62}
+    conversion_rate = {'USD': 1.36, 'AUD': 1.05, 'SGD': 1, 'MYR': 0.35, 'PHP': 0.029, 
+    'CNY': 0.21, 'IDR': 0.0001,'INR': 0.02, 'GBP': 2.03, 'EUR': 1.62}
     
      ```
 
@@ -78,6 +79,11 @@ This function gives us the error rate base on DB data.
 
 * 100 * ((DB commission amount - Web commission amount) / DB commission amount)
 ```
+
+### Match ST 
+
+This function allows us to check if ST is matched in Web, DB or both. 
+
 
 
 
