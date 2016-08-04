@@ -46,43 +46,85 @@ Both data sets are first cleaned before being passed to the 2 different methods:
 
 ### Compare amount
 
-This method will compare the order amount and commission amount in Web data with the order amount and commission amount in DB data to give us the similarity ratio, difference and error rate.
+This method will compare the order amount and commission amount in Web data with the order amount and commission amount in DB data to give us the similarity ratio, difference and error rate, grouped by the date.
 
 #### Similarity ratio
 
 This function gives us the ratio of similarity between the Web and DB's order amount and commission amount.
-```
-* if (DB order amount < Web order amount) : 
-    100 * (DB order amount / Web order amount)
-  else:
-    100 * (Web order amount / DB order amount)
-    
-* if (DB commission amount < Web commission amount) :
-    100 * (DB commission amount / Web commission amount)
-  else:
-    100 * (Web commission amount / DB commission amount)
-```
+
+ ```
+ if (DB order amount < Web order amount) : 
+  100 * (DB order amount / Web order amount)
+ else:
+  100 * (Web order amount / DB order amount)
+ ```
+ 
+ ```
+ if (DB commission amount < Web commission amount) :
+  100 * (DB commission amount / Web commission amount)
+ else:
+  100 * (Web commission amount / DB commission amount)
+ ```
+ 
 #### Difference
 
 This function gives us the difference between the Web and DB's order and commission amount.
-```
-* DB order amount - Web order amount
 
-* DB commission amount - Web commission amount 
-```
+* `DB order amount - Web order amount`
 
-### Error Rate
+* `DB commission amount - Web commission amount `
+
+
+#### Error Rate
 
 This function gives us the error rate base on DB data.
-```
-* 100 * (( DB order amount - Web order amount) / DB order amount)
 
-* 100 * ((DB commission amount - Web commission amount) / DB commission amount)
-```
+* `100 * (( DB order amount - Web order amount) / DB order amount)`
+
+* `100 * ((DB commission amount - Web commission amount) / DB commission amount)`
+
+#### Sample Result
+
+ ![image](https://cloud.githubusercontent.com/assets/19897222/17390538/905fed18-5a40-11e6-8f25-eff0ec337575.png)
+
 
 ### Match ST 
 
-This function allows us to check if ST is matched in Web, DB or both. 
+This method will:
+
+* Check if ST is matched in Web, DB or both.
+* Similarity ratio and difference in count of ST in Web and DB, grouped by affiliate networks.
+
+  ```
+  if Count of DB ST < Count of Web ST:
+    Count of DB ST / Count of Web ST
+  else:
+    Count of Web ST / Count of DB ST 
+  ```
+  
+* Number of missing ST in Web data, grouped by affiliate networks.
+
+  > Note: Missing ST for each order is indicated by '-1' in Web data. This usually occur when people are not signed in when they go onto a shopping trip and made a purchase. Thus, their ST are not tracked.
+  
+
+### Sample Result 
+![image](https://cloud.githubusercontent.com/assets/19897222/17392274/d6a3d542-5a4e-11e6-9de7-cd9d408e4c3c.png)
+
+ST from both data sets are merged into 1 table and matched agaisnt each other.
+
+![image](https://cloud.githubusercontent.com/assets/19897222/17392379/9b97257a-5a4f-11e6-84af-8e1c09817ab3.png)
+
+The number of ST in Web and DB are first grouped by their affiliate network the similarity ratio and differences for the 2 data sets are calculated. 
+
+![image](https://cloud.githubusercontent.com/assets/19897222/17392389/abee3ac6-5a4f-11e6-933a-971f3c4787d8.png)
+
+This table shows the number of missing ST for each merchant. Merchants with no missing ST are not shown.
+
+Findings
+---------
+
+
+
 
 
 
